@@ -24,7 +24,15 @@ MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true }, (err
   // Find One And Delete
   db.collection('Todos').findOneAndDelete({completed: true}).then((result) => {
     console.log(result);
-  })
+  });
+
+  db.collection('Users').deleteMany({name: 'Clem'});
+
+  db.collection('Users').findOneAndDelete({
+    _id: new ObjectID('myID')
+  }).then((result) => {
+    console.log(JSON.stringify(result, undefined, 2));
+  });
 
 
   // client.close();
