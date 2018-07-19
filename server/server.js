@@ -115,7 +115,6 @@ app.post('/users', (req, res) => {
 
 // POST /users/login
 app.post('/users/login', (req, res) => {
-  // console.log('req', req);
   const body = _.pick(req.body, ['email', 'password']);
 
   User.findByCredentials(body.email, body.password).then((user) => {
@@ -125,24 +124,6 @@ app.post('/users/login', (req, res) => {
   }).catch((e) => {
     res.status(400).send();
   });
-
-
-  /* console.log('body', body.email);
-  console.log('body', body.password);
-  User.findOne({email: body.email}).then((user) => {
-    bcrypt.compare(body.password, user.password, (err, success) => {
-      if (success) {
-        console.log('SAME');
-        // res.send(user);
-        return user.generateAuthToken();
-      } else {
-        return res.status(404).send();
-      }
-    });
-  }).catch((e) => {
-    console.log('e', e);
-    res.send(e);
-  }); */
 });
 
 
