@@ -124,7 +124,7 @@ describe('DELETE /todos/:id', () => {
       .set('x-auth', users[1].tokens[0].token)
       .expect(200)
       .expect((res) => {
-        expect(res.body.result._id).toBe(id)
+        expect(res.body.todo._id).toBe(id)
       })
       .end((err, res) => {
         if (err) {
